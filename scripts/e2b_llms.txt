@@ -1,0 +1,202 @@
+# E2B Docs
+
+## Docs
+
+- [E2B Documentation](https://e2b.mintlify.app/docs.md)
+- [Amp](https://e2b.mintlify.app/docs/agents/amp.md): Run Amp in a secure E2B sandbox with full filesystem, terminal, and git access.
+- [Claude Code](https://e2b.mintlify.app/docs/agents/claude-code.md): Run Claude Code in a secure E2B sandbox with full filesystem, terminal, and git access.
+- [Claude Managed Agents](https://e2b.mintlify.app/docs/agents/claude-managed-agents.md): Use E2B as the sandbox runtime for Claude Managed Agents self-hosted environments.
+- [Codex](https://e2b.mintlify.app/docs/agents/codex.md): Run OpenAI Codex in a secure E2B sandbox with full filesystem, terminal, and git access.
+- [Devin](https://e2b.mintlify.app/docs/agents/devin.md): Run Devin for Terminal in a secure E2B sandbox.
+- [OpenAI Agents SDK](https://e2b.mintlify.app/docs/agents/openai-agents-sdk.md): Use E2B sandboxes with the OpenAI Agents SDK.
+- [Deploy OpenClaw](https://e2b.mintlify.app/docs/agents/openclaw/openclaw-gateway.md): Start the OpenClaw gateway in an E2B sandbox and connect your browser.
+- [OpenClaw Telegram](https://e2b.mintlify.app/docs/agents/openclaw/openclaw-telegram.md): Connect OpenClaw to Telegram in an E2B sandbox, approve pairing, and chat through your bot.
+- [OpenCode](https://e2b.mintlify.app/docs/agents/opencode.md): Run OpenCode in a secure E2B sandbox with full filesystem, terminal, and git access.
+- [API key](https://e2b.mintlify.app/docs/api-key.md)
+- [Check the health of the service](https://e2b.mintlify.app/docs/api-reference/envd/check-the-health-of-the-service.md)
+- [Get the environment variables](https://e2b.mintlify.app/docs/api-reference/envd/get-the-environment-variables.md)
+- [Get the stats of the service](https://e2b.mintlify.app/docs/api-reference/envd/get-the-stats-of-the-service.md)
+- [CreateWatcher](https://e2b.mintlify.app/docs/api-reference/filesystem/createwatcher.md): Non-streaming versions of WatchDir
+- [Download a file](https://e2b.mintlify.app/docs/api-reference/filesystem/download-a-file.md)
+- [GetWatcherEvents](https://e2b.mintlify.app/docs/api-reference/filesystem/getwatcherevents.md)
+- [ListDir](https://e2b.mintlify.app/docs/api-reference/filesystem/listdir.md)
+- [MakeDir](https://e2b.mintlify.app/docs/api-reference/filesystem/makedir.md)
+- [Move](https://e2b.mintlify.app/docs/api-reference/filesystem/move.md)
+- [Remove](https://e2b.mintlify.app/docs/api-reference/filesystem/remove.md)
+- [RemoveWatcher](https://e2b.mintlify.app/docs/api-reference/filesystem/removewatcher.md)
+- [Stat](https://e2b.mintlify.app/docs/api-reference/filesystem/stat.md)
+- [Upload a file and ensure the parent directories exist. If the file exists, it will be overwritten.](https://e2b.mintlify.app/docs/api-reference/filesystem/upload-a-file-and-ensure-the-parent-directories-exist-if-the-file-exists-it-will-be-overwritten.md): Any request header of the form `X-Metadata-<key>: <value>` is persisted as a user-defined extended attribute on the uploaded file. The `X-Metadata-` prefix is stripped and the remaining header name is lowercased to form the metadata key; the resulting map is returned on `EntryInfo` lookups (e.g. `St…
+- [WatchDir](https://e2b.mintlify.app/docs/api-reference/filesystem/watchdir.md): Server-streaming RPC. Use the Connect protocol with streaming support.
+- [CloseStdin](https://e2b.mintlify.app/docs/api-reference/process/closestdin.md): Close stdin to signal EOF to the process.  Only works for non-PTY processes. For PTY, send Ctrl+D (0x04) instead.
+- [Connect](https://e2b.mintlify.app/docs/api-reference/process/connect.md): Server-streaming RPC. Use the Connect protocol with streaming support.
+- [List](https://e2b.mintlify.app/docs/api-reference/process/list.md)
+- [SendInput](https://e2b.mintlify.app/docs/api-reference/process/sendinput.md)
+- [SendSignal](https://e2b.mintlify.app/docs/api-reference/process/sendsignal.md)
+- [Start](https://e2b.mintlify.app/docs/api-reference/process/start.md): Server-streaming RPC. Use the Connect protocol with streaming support.
+- [StreamInput](https://e2b.mintlify.app/docs/api-reference/process/streaminput.md): Client-streaming RPC. Client input stream ensures ordering of messages. Use the Connect protocol with streaming support.
+- [Update](https://e2b.mintlify.app/docs/api-reference/process/update.md)
+- [Connect to sandbox](https://e2b.mintlify.app/docs/api-reference/sandboxes/connect-to-sandbox.md): Returns sandbox details. If the sandbox is paused, it will be resumed. TTL is only extended.
+- [Create sandbox](https://e2b.mintlify.app/docs/api-reference/sandboxes/create-sandbox.md): Create a sandbox from the template
+- [Delete sandbox](https://e2b.mintlify.app/docs/api-reference/sandboxes/delete-sandbox.md): Kill a sandbox
+- [Get sandbox](https://e2b.mintlify.app/docs/api-reference/sandboxes/get-sandbox.md): Get a sandbox by id
+- [Get sandbox logs](https://e2b.mintlify.app/docs/api-reference/sandboxes/get-sandbox-logs.md): Get sandbox logs. Use /v2/sandboxes/{sandboxID}/logs instead.
+- [Get sandbox logs (v2)](https://e2b.mintlify.app/docs/api-reference/sandboxes/get-sandbox-logs-v2.md): Get sandbox logs
+- [Get sandbox metrics](https://e2b.mintlify.app/docs/api-reference/sandboxes/get-sandbox-metrics.md): Get sandbox metrics
+- [Get snapshots](https://e2b.mintlify.app/docs/api-reference/sandboxes/get-snapshots.md): List all snapshots for the team
+- [List sandbox metrics](https://e2b.mintlify.app/docs/api-reference/sandboxes/list-sandbox-metrics.md): List metrics for given sandboxes
+- [List sandboxes](https://e2b.mintlify.app/docs/api-reference/sandboxes/list-sandboxes.md): List all running sandboxes
+- [List sandboxes (v2)](https://e2b.mintlify.app/docs/api-reference/sandboxes/list-sandboxes-v2.md): List all sandboxes
+- [Pause sandbox](https://e2b.mintlify.app/docs/api-reference/sandboxes/pause-sandbox.md): Pause the sandbox
+- [Post sandboxes snapshots](https://e2b.mintlify.app/docs/api-reference/sandboxes/post-sandboxes-snapshots.md): Create a persistent snapshot from the sandbox's current state. Snapshots can be used to create new sandboxes and persist beyond the original sandbox's lifetime.
+- [Put sandboxes network](https://e2b.mintlify.app/docs/api-reference/sandboxes/put-sandboxes-network.md): Update the network configuration for a running sandbox. Replaces the current egress rules with the provided configuration. Omitting field clears it.
+- [Refresh sandbox](https://e2b.mintlify.app/docs/api-reference/sandboxes/refresh-sandbox.md): Refresh the sandbox extending its time to live
+- [Resume sandbox](https://e2b.mintlify.app/docs/api-reference/sandboxes/resume-sandbox.md): Resume the sandbox
+- [Set sandbox timeout](https://e2b.mintlify.app/docs/api-reference/sandboxes/set-sandbox-timeout.md): Set the timeout for the sandbox. The sandbox will expire x seconds from the time of the request. Calling this method multiple times overwrites the TTL, each time using the current timestamp as the starting point to measure the timeout duration.
+- [Assign tags](https://e2b.mintlify.app/docs/api-reference/tags/assign-tags.md): Assign tag(s) to a template build
+- [Delete tags](https://e2b.mintlify.app/docs/api-reference/tags/delete-tags.md): Delete multiple tags from templates
+- [List template tags](https://e2b.mintlify.app/docs/api-reference/tags/list-template-tags.md): List all tags for a template
+- [Get team metrics](https://e2b.mintlify.app/docs/api-reference/teams/get-team-metrics.md): Get metrics for the team
+- [Get team metrics max](https://e2b.mintlify.app/docs/api-reference/teams/get-team-metrics-max.md): Get the maximum metrics for the team in the given interval
+- [List teams](https://e2b.mintlify.app/docs/api-reference/teams/list-teams.md): List all teams
+- [Create template](https://e2b.mintlify.app/docs/api-reference/templates/create-template.md): Create a new template
+- [Create template (v2)](https://e2b.mintlify.app/docs/api-reference/templates/create-template-v2.md): Create a new template
+- [Create template (v3)](https://e2b.mintlify.app/docs/api-reference/templates/create-template-v3.md): Create a new template
+- [Delete template](https://e2b.mintlify.app/docs/api-reference/templates/delete-template.md): Delete a template
+- [Get build logs](https://e2b.mintlify.app/docs/api-reference/templates/get-build-logs.md): Get template build logs
+- [Get build status](https://e2b.mintlify.app/docs/api-reference/templates/get-build-status.md): Get template build info
+- [Get build upload link](https://e2b.mintlify.app/docs/api-reference/templates/get-build-upload-link.md): Get an upload link for a tar file containing build layer files
+- [Get template](https://e2b.mintlify.app/docs/api-reference/templates/get-template.md): List all builds for a template
+- [Get template by alias](https://e2b.mintlify.app/docs/api-reference/templates/get-template-by-alias.md): Check if template with given alias exists
+- [List templates](https://e2b.mintlify.app/docs/api-reference/templates/list-templates.md): List all templates
+- [Rebuild template](https://e2b.mintlify.app/docs/api-reference/templates/rebuild-template.md): Rebuild an template
+- [Start build](https://e2b.mintlify.app/docs/api-reference/templates/start-build.md): Start the build
+- [Start build (v2)](https://e2b.mintlify.app/docs/api-reference/templates/start-build-v2.md): Start the build
+- [Update template](https://e2b.mintlify.app/docs/api-reference/templates/update-template.md): Update template
+- [Update template (v2)](https://e2b.mintlify.app/docs/api-reference/templates/update-template-v2.md): Update template
+- [Delete volumes](https://e2b.mintlify.app/docs/api-reference/volumes/delete-volumes.md): Delete a team volume
+- [Get volumes](https://e2b.mintlify.app/docs/api-reference/volumes/get-volumes.md): List all team volumes
+- [Get volumes 1](https://e2b.mintlify.app/docs/api-reference/volumes/get-volumes-1.md): Get team volume info
+- [Post volumes](https://e2b.mintlify.app/docs/api-reference/volumes/post-volumes.md): Create a new team volume
+- [Billing & limits](https://e2b.mintlify.app/docs/billing.md)
+- [BYOC (Bring Your Own Cloud)](https://e2b.mintlify.app/docs/byoc.md)
+- [E2B CLI](https://e2b.mintlify.app/docs/cli.md)
+- [Authentication in CLI](https://e2b.mintlify.app/docs/cli/auth.md)
+- [Connect to sandbox](https://e2b.mintlify.app/docs/cli/connect-to-sandbox.md)
+- [Create sandbox](https://e2b.mintlify.app/docs/cli/create-sandbox.md)
+- [Execute commands in sandbox](https://e2b.mintlify.app/docs/cli/exec-command.md)
+- [List sandboxes](https://e2b.mintlify.app/docs/cli/list-sandboxes.md)
+- [Shutdown running sandboxes](https://e2b.mintlify.app/docs/cli/shutdown-sandboxes.md)
+- [Analyze data with AI](https://e2b.mintlify.app/docs/code-interpreting/analyze-data-with-ai.md)
+- [Pre-installed libraries](https://e2b.mintlify.app/docs/code-interpreting/analyze-data-with-ai/pre-installed-libraries.md)
+- [Code contexts](https://e2b.mintlify.app/docs/code-interpreting/contexts.md)
+- [Create charts & visualizations](https://e2b.mintlify.app/docs/code-interpreting/create-charts-visualizations.md)
+- [Interactive charts](https://e2b.mintlify.app/docs/code-interpreting/create-charts-visualizations/interactive-charts.md)
+- [Static charts](https://e2b.mintlify.app/docs/code-interpreting/create-charts-visualizations/static-charts.md)
+- [Customize the template](https://e2b.mintlify.app/docs/code-interpreting/customize-template.md): Extend the Code Interpreter sandbox or build the production template from source
+- [Streaming](https://e2b.mintlify.app/docs/code-interpreting/streaming.md)
+- [Supported languages](https://e2b.mintlify.app/docs/code-interpreting/supported-languages.md)
+- [Run bash code](https://e2b.mintlify.app/docs/code-interpreting/supported-languages/bash.md)
+- [Run Java code](https://e2b.mintlify.app/docs/code-interpreting/supported-languages/java.md)
+- [Run JavaScript and TypeScript code](https://e2b.mintlify.app/docs/code-interpreting/supported-languages/javascript.md)
+- [Run Python code](https://e2b.mintlify.app/docs/code-interpreting/supported-languages/python.md)
+- [Run R code](https://e2b.mintlify.app/docs/code-interpreting/supported-languages/r.md)
+- [Running commands in sandbox](https://e2b.mintlify.app/docs/commands.md)
+- [Running commands in background](https://e2b.mintlify.app/docs/commands/background.md)
+- [Streaming command output](https://e2b.mintlify.app/docs/commands/streaming.md)
+- [Cookbook](https://e2b.mintlify.app/docs/cookbook.md)
+- [Why does my template build fail with a Docker push authentication error?](https://e2b.mintlify.app/docs/faq/docker-push-authentication-error.md)
+- [Can I run sandboxes in the EU?](https://e2b.mintlify.app/docs/faq/eu-region.md)
+- [Why does iptables fail with 'xt_owner module missing' in a sandbox?](https://e2b.mintlify.app/docs/faq/iptables-xt-owner.md)
+- [Do paused sandboxes count toward the concurrency limit?](https://e2b.mintlify.app/docs/faq/paused-sandboxes-concurrency.md)
+- [Why does pip install fail when building a template?](https://e2b.mintlify.app/docs/faq/pip-install-error.md)
+- [Why does my custom template fail with 'port 49999 not open'?](https://e2b.mintlify.app/docs/faq/port-49999-not-open.md)
+- [Can I make a template public so other teams can use it?](https://e2b.mintlify.app/docs/faq/public-templates.md)
+- [Is there a limit on how many templates I can create?](https://e2b.mintlify.app/docs/faq/template-limit.md)
+- [Filesystem](https://e2b.mintlify.app/docs/filesystem.md)
+- [Download data from sandbox](https://e2b.mintlify.app/docs/filesystem/download.md)
+- [Get information about a file or directory](https://e2b.mintlify.app/docs/filesystem/info.md)
+- [Attach custom metadata to files](https://e2b.mintlify.app/docs/filesystem/metadata.md): Attach custom key-value metadata to files when writing them to the sandbox and read it back with file info methods.
+- [Read & write files](https://e2b.mintlify.app/docs/filesystem/read-write.md)
+- [Upload data to sandbox](https://e2b.mintlify.app/docs/filesystem/upload.md)
+- [Watch sandbox directory for changes](https://e2b.mintlify.app/docs/filesystem/watch.md)
+- [Overview](https://e2b.mintlify.app/docs/mcp.md): Connect to 200+ tools through the Model Context Protocol
+- [Available servers](https://e2b.mintlify.app/docs/mcp/available-servers.md): Browse available MCP servers
+- [Custom servers](https://e2b.mintlify.app/docs/mcp/custom-servers.md): Use custom MCP servers from GitHub repositories
+- [Custom templates](https://e2b.mintlify.app/docs/mcp/custom-templates.md): Use MCP servers with custom sandbox templates
+- [Examples](https://e2b.mintlify.app/docs/mcp/examples.md): Example projects using MCP servers in E2B sandboxes
+- [Quickstart](https://e2b.mintlify.app/docs/mcp/quickstart.md): Get started with MCP integration
+- [E2B_ACCESS_TOKEN deprecation](https://e2b.mintlify.app/docs/migration/access-token-deprecation.md): E2B_ACCESS_TOKEN is being deprecated. Authenticate the CLI with E2B_API_KEY instead.
+- [V2 build system migration](https://e2b.mintlify.app/docs/migration/template-v2.md): How to migrate from the legacy template definition
+- [V1 build system deprecation](https://e2b.mintlify.app/docs/migration/v1-build-deprecation.md): The V1 template build system is deprecated. Migrate to the V2 build system.
+- [SDK v2 migration guide](https://e2b.mintlify.app/docs/migration/v2.md)
+- [Custom domain](https://e2b.mintlify.app/docs/network/custom-domain.md)
+- [Internet access](https://e2b.mintlify.app/docs/network/internet-access.md)
+- [Proxy tunneling](https://e2b.mintlify.app/docs/network/ip-tunneling.md): How to tunnel Sandbox network traffic through a proxy server
+- [Sandbox public URL](https://e2b.mintlify.app/docs/network/public-url.md)
+- [Restricting public access](https://e2b.mintlify.app/docs/network/restrict-public-access.md)
+- [Running your first Sandbox](https://e2b.mintlify.app/docs/quickstart.md): This guide will show you how to start your first E2B Sandbox.
+- [Connect LLMs to E2B](https://e2b.mintlify.app/docs/quickstart/connect-llms.md)
+- [Install custom packages](https://e2b.mintlify.app/docs/quickstart/install-custom-packages.md)
+- [Upload & downloads files](https://e2b.mintlify.app/docs/quickstart/upload-download-files.md)
+- [Sandbox lifecycle](https://e2b.mintlify.app/docs/sandbox.md)
+- [Auto-resume on request](https://e2b.mintlify.app/docs/sandbox/auto-resume.md): Manage sandbox lifecycle and auto-resume on activity.
+- [Connect to running sandbox](https://e2b.mintlify.app/docs/sandbox/connect.md)
+- [Environment variables](https://e2b.mintlify.app/docs/sandbox/environment-variables.md)
+- [Git integration](https://e2b.mintlify.app/docs/sandbox/git-integration.md): Clone repositories, manage branches, and push changes using the sandbox.git methods.
+- [Monitor sandbox lifecycle events](https://e2b.mintlify.app/docs/sandbox/lifecycle-events-api.md)
+- [Sandbox lifecycle webhooks](https://e2b.mintlify.app/docs/sandbox/lifecycle-events-webhooks.md)
+- [List sandboxes](https://e2b.mintlify.app/docs/sandbox/list.md)
+- [Sandbox metadata](https://e2b.mintlify.app/docs/sandbox/metadata.md)
+- [Sandbox metrics](https://e2b.mintlify.app/docs/sandbox/metrics.md)
+- [OTel telemetry export](https://e2b.mintlify.app/docs/sandbox/otel-telemetry-export.md)
+- [Sandbox persistence](https://e2b.mintlify.app/docs/sandbox/persistence.md)
+- [Interactive terminal (PTY)](https://e2b.mintlify.app/docs/sandbox/pty.md)
+- [Secured access](https://e2b.mintlify.app/docs/sandbox/secured-access.md)
+- [Sandbox snapshots](https://e2b.mintlify.app/docs/sandbox/snapshots.md)
+- [SSH access](https://e2b.mintlify.app/docs/sandbox/ssh-access.md): Connect to your sandbox via SSH using a WebSocket proxy
+- [Errors](https://e2b.mintlify.app/docs/sdk-reference/js-sdk/v2.29.1/errors.md)
+- [Sandbox](https://e2b.mintlify.app/docs/sdk-reference/js-sdk/v2.29.1/sandbox.md)
+- [Sandbox commands](https://e2b.mintlify.app/docs/sdk-reference/js-sdk/v2.29.1/sandbox-commands.md)
+- [Sandbox filesystem](https://e2b.mintlify.app/docs/sdk-reference/js-sdk/v2.29.1/sandbox-filesystem.md)
+- [Template](https://e2b.mintlify.app/docs/sdk-reference/js-sdk/v2.29.1/template.md)
+- [Template logger](https://e2b.mintlify.app/docs/sdk-reference/js-sdk/v2.29.1/template-logger.md)
+- [Template readycmd](https://e2b.mintlify.app/docs/sdk-reference/js-sdk/v2.29.1/template-readycmd.md)
+- [Volume](https://e2b.mintlify.app/docs/sdk-reference/js-sdk/v2.29.1/volume.md)
+- [Archil](https://e2b.mintlify.app/docs/storage/archil.md): Mount Archil's elastic POSIX file system in your E2B sandbox for high-performance, shared access to S3, R2, and GCS object storage.
+- [Cloud buckets](https://e2b.mintlify.app/docs/storage/cloud-buckets.md)
+- [Need help?](https://e2b.mintlify.app/docs/support.md)
+- [Base image](https://e2b.mintlify.app/docs/template/base-image.md): How to define a base image for your template
+- [Build](https://e2b.mintlify.app/docs/template/build.md): How to build the template
+- [Caching](https://e2b.mintlify.app/docs/template/caching.md): How the caching process works
+- [Defining template](https://e2b.mintlify.app/docs/template/defining-template.md): How to create your own template
+- [Error handling](https://e2b.mintlify.app/docs/template/error-handling.md): Handle errors in your template
+- [Claude Code](https://e2b.mintlify.app/docs/template/examples/claude-code.md): Claude Code Agent available in a sandbox
+- [Desktop](https://e2b.mintlify.app/docs/template/examples/desktop.md): Sandbox with Ubuntu Desktop and VNC access
+- [Docker](https://e2b.mintlify.app/docs/template/examples/docker.md): Sandbox with Docker or Docker Compose installed for running containers
+- [Expo app](https://e2b.mintlify.app/docs/template/examples/expo.md): Expo web app running in the sandbox using Node.js
+- [Next.js app](https://e2b.mintlify.app/docs/template/examples/nextjs.md): Next.js web app running in the sandbox using Node.js
+- [Next.js app (Bun)](https://e2b.mintlify.app/docs/template/examples/nextjs-bun.md): Next.js web app running in the sandbox using Bun
+- [How it works](https://e2b.mintlify.app/docs/template/how-it-works.md): How the template building process works
+- [Logging](https://e2b.mintlify.app/docs/template/logging.md): How to view logs from the template build
+- [Template names](https://e2b.mintlify.app/docs/template/names.md): Understanding and managing template names
+- [Private registries](https://e2b.mintlify.app/docs/template/private-registries.md): Access private registries as the base image
+- [Quickstart](https://e2b.mintlify.app/docs/template/quickstart.md): Start with custom sandbox templates
+- [Start & ready commands](https://e2b.mintlify.app/docs/template/start-ready-command.md): Define running processes for the sandbox
+- [Template tags & versioning](https://e2b.mintlify.app/docs/template/tags.md): Use tags to version your templates and manage environment-based deployments
+- [User and workdir](https://e2b.mintlify.app/docs/template/user-and-workdir.md): Default user and working directory in the sandbox and template
+- [GitHub Actions CI/CD](https://e2b.mintlify.app/docs/use-cases/ci-cd.md): Run AI-powered code review, testing, and validation in secure E2B sandboxes from your GitHub Actions workflows.
+- [Coding Agents](https://e2b.mintlify.app/docs/use-cases/coding-agents.md): Run AI coding agents like Claude Code, Codex, and Amp in secure E2B sandboxes with full terminal, filesystem, and git access.
+- [Computer use](https://e2b.mintlify.app/docs/use-cases/computer-use.md): Build AI agents that see, understand, and control virtual Linux desktops using E2B Desktop sandboxes.
+- [Cloud browser](https://e2b.mintlify.app/docs/use-cases/remote-browser.md): Use Kernel cloud browsers with E2B sandboxes to give your agents access to the internet.
+- [Volumes](https://e2b.mintlify.app/docs/volumes.md): Persistent storage that exists independently of sandboxes and can be mounted across multiple sandboxes.
+- [Download data from volume](https://e2b.mintlify.app/docs/volumes/download.md): Download files from a volume to your local filesystem with the E2B SDK.
+- [Get information about a file or directory](https://e2b.mintlify.app/docs/volumes/info.md): Get metadata, check existence, and update permissions for files and directories in a volume.
+- [Managing volumes](https://e2b.mintlify.app/docs/volumes/manage.md): Create, connect to, list, inspect, and destroy volumes with the E2B SDK.
+- [Migrating data between volumes](https://e2b.mintlify.app/docs/volumes/migrate.md): Copy all data from one E2B volume to another by mounting both into a sandbox and using rsync.
+- [Mounting volumes](https://e2b.mintlify.app/docs/volumes/mount.md): Mount one or more volumes to a sandbox at custom paths when creating it.
+- [Read & write files](https://e2b.mintlify.app/docs/volumes/read-write.md): Read, write, list, and remove files and directories in a volume with the SDK.
+- [Upload data to volume](https://e2b.mintlify.app/docs/volumes/upload.md): Upload single files or entire directories from your local filesystem to a volume.
+
+## OpenAPI Specs
+
+- [openapi-public](https://e2b.mintlify.app/openapi-public.yml)
