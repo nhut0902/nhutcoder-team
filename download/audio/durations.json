@@ -1,0 +1,30 @@
+{
+  "durations": {
+    "s2": 8.4,
+    "s3": 8.328,
+    "s5": 13.248
+  },
+  "total": 29.976,
+  "scenes": [
+    {
+      "id": "s1",
+      "text": "Chào mừng các bạn đến với Browser Use, thư viện Python mã nguồn mở giúp các tác nhân AI tự động hóa trình duyệt web một cách dễ dàng."
+    },
+    {
+      "id": "s2",
+      "text": "Với hơn một trăm nghìn sao trên GitHub và hơn mười một nghìn lượt fork, Browser Use hiện là công cụ hàng đầu cho việc điều khiển trình duyệt bằng AI."
+    },
+    {
+      "id": "s3",
+      "text": "Cài đặt cực kỳ đơn giản. Bạn chỉ cần mở terminal và chạy pip install browser-use. Thế là xong."
+    },
+    {
+      "id": "s4",
+      "text": "Các tính năng nổi bật bao gồm điều khiển AI agent, tự động click chuột, gõ văn bản, cuộn trang và trích xuất dữ liệu từ bất kỳ trang web nào."
+    },
+    {
+      "id": "s5",
+      "text": "Browser Use được xây dựng trên Playwright và tương thích với mọi mô hình ngôn ngữ lớn. Truy cập github.com/browser-use để bắt đầu ngay hôm nay. Đừng quên theo dõi kênh nhé!"
+    }
+  ]
+}
