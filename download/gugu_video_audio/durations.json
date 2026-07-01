@@ -1,0 +1,37 @@
+{
+  "durations": {
+    "s1": 11.376,
+    "s2": 11.04,
+    "s3": 16.632,
+    "s4": 13.56,
+    "s5": 12.936,
+    "s6": 10.512
+  },
+  "total": 76.056,
+  "scenes": [
+    {
+      "id": "s1",
+      "text": "So sánh ba ông lớn AI 2026: Sakana Fugu, GPT-5.6 Sol, và Claude Fable 5. Cuộc đua chưa bao giờ nóng đến thế!"
+    },
+    {
+      "id": "s2",
+      "text": "Sakana Fugu của Nhật Bản, ra mắt 22 tháng 6 năm 2026. Đây là hệ thống multi-agent, điều phối nhiều model qua một API."
+    },
+    {
+      "id": "s3",
+      "text": "Terminal-Bench 2.1: GPT-5.6 Sol Ultra dẫn đầu 91.9 phần trăm. GPT-5.6 Sol 88.8. Claude Fable 5 đạt 83.4. Fugu Ultra 82.1."
+    },
+    {
+      "id": "s4",
+      "text": "SWE-Bench Pro coding: Claude Fable 5 thắng 80.3, hơn Fugu Ultra 73.7. Nhưng LiveCodeBench: Fugu Ultra dẫn 93.2, Claude 89.8."
+    },
+    {
+      "id": "s5",
+      "text": "Giá mỗi triệu token: GPT-5.6 Sol và Fugu Ultra đều 5 đô input, 30 đô output. Claude Fable 5 đắt nhất 10 đô la. Luna rẻ nhất 1 đô la."
+    },
+    {
+      "id": "s6",
+      "text": "Kết luận: không ai thắng tuyệt đối. Coding chọn Claude, đa tác vụ chọn Fugu, giá rẻ chọn GPT-5.6. Follow kênh nhé!"
+    }
+  ]
+}
