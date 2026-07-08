@@ -1,0 +1,43 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; }
+body { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; }
+
+body { background: linear-gradient(135deg, #0a0e1a 0%, #1a1040 50%, #0a0e1a 100%); color: #fff; }
+.orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; }
+.orb1 { width: 400px; height: 400px; background: #4285f4; top: -100px; left: -100px; }
+.orb2 { width: 500px; height: 500px; background: #7c5cff; bottom: -150px; right: -150px; }
+.header { position: absolute; top: 80px; left: 50%; transform: translateX(-50%); padding: 12px 30px; border: 3px solid #50c878; border-radius: 8px; font-size: 34px; font-weight: 700; color: #50c878; }
+.title { position: absolute; top: 220px; left: 50%; transform: translateX(-50%); font-size: 100px; font-weight: 900; text-align: center; line-height: 1.1; }
+.title .accent { background: linear-gradient(135deg, #4285f4, #7c5cff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.sub { position: absolute; top: 480px; left: 50%; transform: translateX(-50%); font-size: 40px; color: #cbd5e1; text-align: center; }
+.links { position: absolute; top: 650px; left: 80px; right: 80px; background: rgba(15,12,30,0.8); border: 3px solid #4285f4; border-radius: 18px; padding: 36px; }
+.links .url { font-size: 38px; font-weight: 700; color: #4285f4; text-align: center; margin-bottom: 16px; }
+.links .url2 { font-size: 38px; font-weight: 700; color: #50c878; text-align: center; margin-bottom: 20px; }
+.links .hash { font-size: 36px; font-weight: 700; color: #7c5cff; text-align: center; }
+.sub2 { position: absolute; bottom: 200px; left: 50%; transform: translateX(-50%); text-align: center; }
+.sub2 p { font-size: 36px; color: #fff; }
+.footer { position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%); padding: 10px 20px; border: 2px solid #50c878; border-radius: 6px; font-size: 28px; font-weight: 700; color: #50c878; }
+@keyframes fadeUp { from { opacity: 0; transform: translate(-50%, 30px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes glow { from { filter: drop-shadow(0 0 0 transparent); } to { filter: drop-shadow(0 0 40px rgba(124,92,255,0.6)); } }
+.header { animation: fadeUp 0.5s both; }
+.title { animation: fadeUp 0.8s 0.2s both, glow 1s 1s both; }
+.sub { animation: fadeUp 0.5s 0.6s both; }
+.links { animation: fadeUp 0.6s 0.9s both; }
+.sub2 { animation: fadeUp 0.5s 1.3s both; }
+.footer { animation: fadeUp 0.4s 1.6s both; }
+</style></head><body>
+<div class="orb orb1"></div><div class="orb orb2"></div>
+<div class="header">TAKEAWAY</div>
+<div class="title"><span class="accent">Context7</span><br>cho AI coding</div>
+<div class="sub">58K⭐ · MCP Server · Ngăn hallucinations</div>
+<div class="links">
+<div class="url">github.com/upstash/context7</div>
+<div class="url2">context7.com</div>
+<div class="hash">#Context7 #MCP #AICoding #VibeCoding</div>
+</div>
+<div class="sub2"><p>Follow kênh để cập nhật AI tools!</p></div>
+<div class="footer">FOLLOW FOR MORE</div>
+</body></html>
