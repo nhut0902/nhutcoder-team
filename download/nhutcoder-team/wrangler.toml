@@ -1,0 +1,24 @@
+name = "nhutcoder-team"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".next/static"
+
+[vars]
+NEXT_PUBLIC_SITE_URL = "https://nhutcoder-team.pages.dev"
+
+# Cloudflare D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "nhutcoder-team-db"
+database_id = "local"
+
+# Cloudflare KV (for caching)
+[[kv_namespaces]]
+binding = "CACHE"
+id = "local"
+
+[build]
+command = "npm run build"
+
+[build.upload]
+format = "service-worker"

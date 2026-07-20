@@ -196,7 +196,7 @@ export const PROJECTS: Project[] = [
       { label: "GMV / mo", value: "$210k" },
     ],
     repo: "https://github.com/nhut0902/linea",
-    demo: "https://linea-commerce.vercel.app",
+    demo: "https://linea.nhutcoder.com",
     accent: "cyan",
   },
   {

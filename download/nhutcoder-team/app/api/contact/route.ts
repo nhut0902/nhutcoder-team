@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import type { ContactPayload } from "@/types";
 
-// In-memory store for demo purposes — survives across hot reloads
-// within a single Node process. Swap for a real DB / queue in production.
-const submissionLog: Array<ContactPayload & { receivedAt: string }> = [];
-
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Cloudflare D1 binding (injected at runtime on Cloudflare Pages)
+interface Env {
+  DB: { prepare: (sql: string) => { bind: (...args: any[]) => { run: () => Promise<any> } } };
+}
 
 export async function POST(request: Request) {
   let body: ContactPayload;
@@ -37,10 +38,7 @@ export async function POST(request: Request) {
   }
   if (!message || message.length < 10) {
     return NextResponse.json(
-      {
-        ok: false,
-        error: "Please include a message of at least 10 characters.",
-      },
+      { ok: false, error: "Please include a message of at least 10 characters." },
       { status: 422 }
     );
   }
@@ -48,16 +46,28 @@ export async function POST(request: Request) {
   const record = {
     name,
     email,
-    company: (body.company ?? "").trim() || undefined,
-    projectType: body.projectType || undefined,
-    budget: body.budget || undefined,
+    company: (body.company ?? "").trim() || "",
+    projectType: body.projectType || "",
+    budget: body.budget || "",
     message,
     receivedAt: new Date().toISOString(),
   };
 
-  submissionLog.push(record);
+  // Try to save to Cloudflare D1
+  try {
+    const env = (process.env as unknown) as Env;
+    if (env.DB) {
+      await env.DB.prepare(
+        "INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)"
+      )
+        .bind(name, email, message)
+        .run();
+    }
+  } catch {
+    console.error("contact: D1 insert failed, continuing without DB");
+  }
 
-  // Optional: forward to an external webhook (Slack, Discord, Zapier, Resend…)
+  // Optional webhook
   const webhook = process.env.CONTACT_WEBHOOK_URL;
   if (webhook) {
     try {
@@ -67,12 +77,10 @@ export async function POST(request: Request) {
         body: JSON.stringify(record),
       });
     } catch {
-      // Don't fail the user-facing response if the webhook hiccups
       console.error("contact: webhook delivery failed");
     }
   }
 
-  // Light log for server-side debugging
   console.log(`[contact] received submission from ${name} <${email}>`);
 
   return NextResponse.json({
@@ -82,7 +90,6 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
-  // Friendly hint for anyone sniffing the endpoint
   return NextResponse.json({
     ok: true,
     endpoint: "POST /api/contact",

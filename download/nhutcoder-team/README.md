@@ -10,7 +10,7 @@ The site is built with **Next.js 16 (App Router)**, **TypeScript**,
 **Tailwind CSS 4**, **Framer Motion**, **Lucide icons**, and the
 **[@marmoui/ui](https://www.npmjs.com/package/@marmoui/ui)** component
 library. The design language is intentionally editorial and dark-first —
-inspired by Linear, Raycast, Stripe, and Vercel.
+inspired by Linear, Raycast, Stripe, and Cloudflare.
 
 ---
 
@@ -127,7 +127,7 @@ nhutcoder-team/
 ├─ tsconfig.json
 ├─ eslint.config.mjs             # flat config
 ├─ postcss.config.mjs
-├─ vercel.json
+├─ wrangler.toml             # Cloudflare Pages config
 └─ .env.example
 ```
 
@@ -237,17 +237,40 @@ See [`.env.example`](./.env.example) for the full list. Summary:
 
 ---
 
-## ☁️ Deploying to Vercel
+## ☁️ Deploying to Cloudflare Pages
 
-This repository is Vercel-ready:
+This repository is Cloudflare-ready:
 
+### Option A: Cloudflare Dashboard
 1. Push to GitHub.
-2. Import the repo at [vercel.com/new](https://vercel.com/new).
-3. Framework is auto-detected as Next.js.
-4. (Optional) Add the env vars from `.env.example`.
-5. Deploy.
+2. Go to [Cloudflare Dashboard](https://dash.cloudflare.com) → Pages → Create a project.
+3. Connect your GitHub repo.
+4. Framework preset: **Next.js**.
+5. Build command: `npm run build`
+6. Output directory: `.next/static`
+7. Add env vars from `.env.example`.
+8. Deploy.
 
-`vercel.json` pins the framework, build command, and security headers.
+### Option B: Wrangler CLI
+```bash
+npm install -g wrangler
+wrangler login
+wrangler pages deploy .next/static --project-name=nhutcoder-team
+```
+
+### Cloudflare D1 Database
+```bash
+# Create D1 database
+wrangler d1 create nhutcoder-team-db
+
+# Apply schema
+wrangler d1 execute nhutcoder-team-db --file=db/schema.sql
+
+# Run locally
+wrangler pages dev .next/static --d1=DB
+```
+
+`wrangler.toml` pins the D1 database binding, KV cache, and build config.
 
 ---
 
