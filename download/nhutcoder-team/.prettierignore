@@ -1,0 +1,18 @@
+# Build / dep artifacts
+.next/
+out/
+build/
+node_modules/
+*.log
+npm-debug.log*
+.vercel
+
+# Lockfile noise — Prettier shouldn't reformat these
+bun.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Generated
+next-env.d.ts
+.tsbuildinfo
