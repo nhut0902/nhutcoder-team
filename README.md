@@ -239,32 +239,56 @@ See [`.env.example`](./.env.example) for the full list. Summary:
 
 ## ☁️ Deploying to Cloudflare Pages
 
-This repository is Cloudflare-ready:
-
-### Option A: Cloudflare Dashboard
+### Step 1: Connect Repository
 1. Push to GitHub.
-2. Go to [Cloudflare Dashboard](https://dash.cloudflare.com) → Pages → Create a project.
-3. Connect your GitHub repo.
+2. Go to [Cloudflare Dashboard](https://dash.cloudflare.com) → Workers & Pages → Create.
+3. Connect your GitHub repo: `nhut0902/nhutcoder-team`.
 4. Framework preset: **Next.js**.
 5. Build command: `npm run build`
-6. Output directory: `.next/static`
-7. Add env vars from `.env.example`.
-8. Deploy.
+6. Build output directory: `.next/static`
+7. Do NOT set a deploy command (leave empty — Cloudflare Pages handles this automatically).
+8. Add environment variables from `.env.example`.
+9. Click **Save and Deploy**.
 
-### Option B: Wrangler CLI
-```bash
-npm install -g wrangler
-wrangler login
-wrangler pages deploy .next/static --project-name=nhutcoder-team
-```
-
-### Cloudflare D1 Database
+### Step 2: Create D1 Database
 ```bash
 # Create D1 database
-wrangler d1 create nhutcoder-team-db
+npx wrangler d1 create nhutcoder-team-db
 
-# Apply schema
-wrangler d1 execute nhutcoder-team-db --file=db/schema.sql
+# Copy the database_id from output into wrangler.toml
+
+# Generate Drizzle migration
+npm run db:generate
+
+# Apply migration
+npx wrangler d1 migrations apply nhutcoder-team-db --remote
+
+# Seed data
+npx wrangler d1 execute nhutcoder-team-db --remote --command="$(bun db/seed.ts 2>/dev/null | tail -n +3)"
+```
+
+### Step 3: Create R2 Bucket
+```bash
+npx wrangler r2 bucket create nhutcoder-images
+```
+
+### Step 4: Bind D1 + R2 in Cloudflare Dashboard
+- Go to Pages → your project → Settings → Functions → Bindings
+- Add **D1 database binding**: Variable name = `DB`, Database = `nhutcoder-team-db`
+- Add **R2 bucket binding**: Variable name = `R2`, Bucket = `nhutcoder-images`
+- Add **KV namespace binding**: Variable name = `CACHE` (optional, for caching)
+
+### Local Development with D1
+```bash
+# Create local D1 database
+npx wrangler d1 create nhutcoder-team-db --local
+
+# Apply schema locally
+npx wrangler d1 execute nhutcoder-team-db --local --file=db/schema.sql
+
+# Run dev server with local D1
+npx wrangler pages dev .next/static --d1=DB --r2=R2 --kv=CACHE -- npm run dev
+```
 
 # Run locally
 wrangler pages dev .next/static --d1=DB

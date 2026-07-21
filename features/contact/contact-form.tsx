@@ -55,10 +55,12 @@ export function ContactForm() {
       });
 
       if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(
-          body?.error ?? "Something went wrong. Please try again."
-        );
+        let errorMsg = "Something went wrong. Please try again.";
+        try {
+          const body = await res.json() as { error?: string };
+          if (body?.error) errorMsg = body.error;
+        } catch {}
+        throw new Error(errorMsg);
       }
 
       setStatus("success");

@@ -1,24 +1,23 @@
+# Cloudflare Pages configuration for Next.js
+# No wrangler.toml needed — Cloudflare Pages uses dashboard settings.
+# This file is kept only for D1 database bindings when running locally.
+
 name = "nhutcoder-team"
-compatibility_date = "2025-01-01"
+compatibility_date = "2025-07-01"
 compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = ".next/static"
 
-[vars]
-NEXT_PUBLIC_SITE_URL = "https://nhutcoder-team.pages.dev"
-
-# Cloudflare D1 Database
+# D1 database binding (used by API routes at runtime)
 [[d1_databases]]
 binding = "DB"
 database_name = "nhutcoder-team-db"
 database_id = "local"
 
-# Cloudflare KV (for caching)
+# R2 bucket for image uploads
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "nhutcoder-images"
+
+# KV for caching
 [[kv_namespaces]]
 binding = "CACHE"
 id = "local"
-
-[build]
-command = "npm run build"
-
-[build.upload]
-format = "service-worker"
