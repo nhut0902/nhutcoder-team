@@ -3,8 +3,6 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  // Cloudflare Pages: standalone output for @cloudflare/next-on-pages compatibility
-  output: "standalone",
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],
   },

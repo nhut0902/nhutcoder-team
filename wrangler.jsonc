@@ -1,0 +1,40 @@
+{
+  "name": "nhutcoder-team",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-07-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://nhutcoder-team.workers.dev"
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "nhutcoder-team-db",
+      "database_id": "local"
+    }
+  ],
+
+  "r2_buckets": [
+    {
+      "binding": "R2",
+      "bucket_name": "nhutcoder-images"
+    }
+  ],
+
+  "kv_namespaces": [
+    {
+      "binding": "CACHE",
+      "id": "local"
+    }
+  ],
+
+  "observability": {
+    "enabled": true
+  }
+}
