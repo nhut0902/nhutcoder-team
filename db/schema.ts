@@ -59,3 +59,12 @@ export const images = sqliteTable("images", {
   size: integer("size"),
   uploadedAt: text("uploaded_at").default("CURRENT_TIMESTAMP"),
 });
+
+// Users (auth)
+export const users = sqliteTable("users", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  name: text("name").notNull(),
+  email: text("email").unique().notNull(),
+  passwordHash: text("password_hash").notNull(),
+  createdAt: text("created_at").default("CURRENT_TIMESTAMP"),
+});
