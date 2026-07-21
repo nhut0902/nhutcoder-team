@@ -7,19 +7,16 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
-
   "vars": {
     "NEXT_PUBLIC_SITE_URL": "https://nhutcoder-team.workers.dev"
   },
-
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "nhutcoder-team-db",
-      "database_id": "YOUR_D1_DATABASE_ID"
+      "database_id": "59527747-46b4-4ca2-b23c-beff78944c7e"
     }
   ],
-
   "observability": {
     "enabled": true
   }
