@@ -85,6 +85,15 @@
   --color-icon-primary-bright: var(--color-brand-300);
   --color-border-primary: var(--color-brand-500);
   --color-border-focus: var(--color-brand-400);
+
+  /* Aliases for components that use shorthand variable names */
+  --bg: var(--color-surface-0);
+  --text: var(--color-ink-strong);
+  --text-muted: var(--color-ink-faint);
+  --surface: var(--color-surface-1);
+  --surface-hover: var(--color-surface-2);
+  --accent: var(--color-brand-500);
+  --border: var(--color-edge);
 }
 
 /* Optional light theme — kept subtle, brand stays premium */
@@ -117,6 +126,15 @@
   --color-ink-primary: var(--color-brand-700);
   --color-icon-primary: var(--color-brand-600);
   --color-icon-primary-bright: var(--color-brand-500);
+
+  /* Aliases for light theme */
+  --bg: var(--color-surface-0);
+  --text: var(--color-ink-strong);
+  --text-muted: var(--color-ink-faint);
+  --surface: var(--color-surface-1);
+  --surface-hover: var(--color-surface-2);
+  --accent: var(--color-brand-600);
+  --border: var(--color-edge);
 }
 
 /* ───────────── Base resets / typography ───────────── */
