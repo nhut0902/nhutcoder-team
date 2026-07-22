@@ -10,14 +10,14 @@ import type {
 
 export const SITE = {
   name: "NhutCoder Team",
-  tagline: "Building the future with code and AI",
+  tagline: "Xây dựng tương lai bằng code và AI",
   description:
-    "NhutCoder Team — an independent developer collective building open-source tools, AI products, and immersive web & game experiences. We ship fast, ship openly, and obsess over craft.",
+    "NhutCoder Team — tập thể lập trình viên độc lập xây dựng công cụ open-source, sản phẩm AI, và trải nghiệm web & game đột phá. Phát triển nhanh, mở nguồn, và tỉ mỉ từng chi tiết.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://nhutcoder.team",
   github: "https://github.com/nhut0902",
   githubUsername: "nhut0902",
-  email: "hello@nhutcoder.team",
-  location: "Ho Chi Minh City, Vietnam",
+  email: "nhutcoderteam0902@gmail.com",
+  location: "Thành phố Hồ Chí Minh, Việt Nam",
   founded: 2022,
   ogImage: "/og.png",
   keywords: [
@@ -25,20 +25,22 @@ export const SITE = {
     "NhutCoder Team",
     "Open Source",
     "AI",
-    "Web Development",
-    "Game Development",
+    "Phát triển Web",
+    "Phát triển Game",
     "Next.js",
     "TypeScript",
-    "Developer Portfolio",
+    "Portfolio Lập trình viên",
   ],
 } as const;
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
+  { label: "Trang chủ", href: "/" },
+  { label: "Dự án", href: "/projects" },
+  { label: "Bán code", href: "/marketplace" },
+  { label: "Kho Prompt", href: "/prompts" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
+  { label: "Giới thiệu", href: "/about" },
+  { label: "Liên hệ", href: "/contact" },
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [

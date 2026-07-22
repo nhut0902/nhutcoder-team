@@ -21,12 +21,12 @@ export default function LoginPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-      const data: { error?: string; token?: string } = await res.json();
-      if (!res.ok) throw new Error(data.error || "Login failed");
-      localStorage.setItem("token", data.token ?? "");
+      const data: { ok: boolean; error?: string; token?: string } = await res.json();
+      if (!res.ok) throw new Error(data.error || "Đăng nhập thất bại");
+      if (data.token) localStorage.setItem("token", data.token);
       window.location.href = "/dashboard";
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Login failed");
+      setError(err instanceof Error ? err.message : "Đăng nhập thất bại");
     } finally {
       setLoading(false);
     }
@@ -37,7 +37,8 @@ export default function LoginPage() {
       <div className="min-h-screen flex items-center justify-center px-4 pt-24 pb-12">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           className="w-full max-w-md bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8">
-          <h1 className="text-2xl font-bold mb-6 text-center">Welcome Back</h1>
+          <h1 className="text-2xl font-bold mb-2 text-center">Chào mừng trở lại</h1>
+          <p className="text-sm text-[var(--text-muted)] mb-6 text-center">Đăng nhập để tiếp tục</p>
           {error && <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-sm text-red-400">{error}</div>}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -49,7 +50,7 @@ export default function LoginPage() {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1.5">Password</label>
+              <label className="block text-sm font-medium mb-1.5">Mật khẩu</label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-muted)]" />
                 <input type="password" required value={password} onChange={e => setPassword(e.target.value)}
@@ -58,14 +59,14 @@ export default function LoginPage() {
             </div>
             <button type="submit" disabled={loading}
               className="w-full py-2.5 bg-[var(--accent)] text-[var(--bg)] rounded-lg font-medium text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50">
-              {loading ? "Signing in..." : <>Sign In <ArrowRight className="w-4 h-4" /></>}
+              {loading ? "Đang đăng nhập..." : <>Đăng nhập <ArrowRight className="w-4 h-4" /></>}
             </button>
           </form>
           <div className="mt-6 text-center text-sm text-[var(--text-muted)]">
-            Don&apos;t have an account? <Link href="/register" className="text-[var(--accent)] hover:underline">Register</Link>
+            Chưa có tài khoản? <Link href="/register" className="text-[var(--accent)] hover:underline">Đăng ký</Link>
           </div>
           <div className="mt-2 text-center text-sm">
-            <Link href="/forgot-password" className="text-[var(--text-muted)] hover:text-[var(--accent)]">Forgot password?</Link>
+            <Link href="/forgot-password" className="text-[var(--text-muted)] hover:text-[var(--accent)]">Quên mật khẩu?</Link>
           </div>
         </motion.div>
       </div>
