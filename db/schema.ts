@@ -66,5 +66,17 @@ export const users = sqliteTable("users", {
   name: text("name").notNull(),
   email: text("email").unique().notNull(),
   passwordHash: text("password_hash").notNull(),
+  verified: integer("verified", { mode: "boolean" }).default(false),
+  createdAt: text("created_at").default("CURRENT_TIMESTAMP"),
+});
+
+// OTP codes (email verification + password reset)
+export const otpCodes = sqliteTable("otp_codes", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  email: text("email").notNull(),
+  code: text("code").notNull(),
+  type: text("type").default("register"),
+  expiresAt: text("expires_at").notNull(),
+  used: integer("used", { mode: "boolean" }).default(false),
   createdAt: text("created_at").default("CURRENT_TIMESTAMP"),
 });

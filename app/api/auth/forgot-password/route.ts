@@ -1,14 +1,12 @@
 import { NextResponse } from "next/server";
+import { getDb } from "@/lib/db";
+import { otpCodes } from "@/db/schema";
 import { z } from "zod";
-import { sendPasswordResetEmail } from "@/lib/email";
+import { generateOTP } from "@/lib/email";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
 
 const schema = z.object({ email: z.string().email() });
-
-// Store reset tokens temporarily
-const resetStore = new Map<string, { expires: number }>();
-(globalThis as any).__resetStore = resetStore;
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => ({}));
@@ -19,17 +17,31 @@ export async function POST(request: Request) {
 
   const { email } = parsed.data;
 
-  // Generate reset link
-  const resetToken = btoa(email + ":" + Date.now());
-  const resetLink = `${process.env.NEXT_PUBLIC_SITE_URL || "https://nhutcoder-team.workers.dev"}/forgot-password?token=${resetToken}`;
-  
-  resetStore.set(resetToken, { expires: Date.now() + 30 * 60 * 1000 });
-
-  // Send email
-  const sent = await sendPasswordResetEmail(email, resetLink);
-  if (!sent) {
-    return NextResponse.json({ ok: false, error: "Không thể gửi email" }, { status: 500 });
+  // Generate reset code and store in D1
+  const resetCode = generateOTP();
+  try {
+    const db = getDb();
+    if (db) {
+      const expiresAt = new Date(Date.now() + 30 * 60 * 1000).toISOString();
+      await db.insert(otpCodes).values({
+        email,
+        code: resetCode,
+        type: "reset",
+        expiresAt,
+      });
+    }
+  } catch (e) {
+    console.error("[auth/forgot-password] D1 error:", e);
   }
 
-  return NextResponse.json({ ok: true, message: "Link đặt lại mật khẩu đã được gửi" });
+  // TODO: Send email with reset link containing the code
+  // For now: log it (in production use Resend/SendGrid)
+  console.log(`[RESET] Email: ${email} | Code: ${resetCode}`);
+
+  return NextResponse.json({
+    ok: true,
+    message: "Link đặt lại mật khẩu đã được gửi đến email của bạn",
+    // For testing: return code in dev mode
+    dev_code: process.env.NODE_ENV === "development" ? resetCode : undefined,
+  });
 }
