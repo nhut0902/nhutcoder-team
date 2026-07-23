@@ -61,80 +61,84 @@
 /* ───────────── Dark surface overrides (default) ───────────── */
 :root {
   color-scheme: dark;
-  /* Override Marmo tokens for our dark-first brand */
-  --color-bg: var(--color-surface-0);
-  --color-panel: var(--color-surface-1);
-  --color-ink: var(--color-ink-soft);
-  --color-ink-dark: var(--color-ink-strong);
-  --color-ink-light: var(--color-ink-faint);
-  --color-ink-muted: var(--color-ink-faint);
-  --color-border: var(--color-edge);
-  --color-border-hover: var(--color-edge-strong);
-  --color-border-secondary: var(--color-edge);
-  --color-border-muted: oklch(1 0 0 / 0.04);
-  --color-muted: oklch(1 0 0 / 0.05);
 
-  /* Re-tint primary to brand lime */
-  --color-primary-solid: var(--color-brand-500);
-  --color-primary-solid-hover: var(--color-brand-400);
-  --color-primary-bright: var(--color-brand-300);
-  --color-primary-muted: oklch(0.2 0.06 140);
-  --color-primary-contrast: oklch(0.12 0.02 256);
-  --color-ink-primary: var(--color-brand-400);
-  --color-icon-primary: var(--color-brand-400);
-  --color-icon-primary-bright: var(--color-brand-300);
-  --color-border-primary: var(--color-brand-500);
-  --color-border-focus: var(--color-brand-400);
+  /* Hardcoded hex values (not oklch) for maximum browser compatibility */
+  --color-brand-500: #84d44b;
+  --color-brand-400: #a3e070;
+  --color-brand-300: #c0eb8f;
+  --color-surface-0: #0a0d14;
+  --color-surface-1: #11151f;
+  --color-surface-2: #1a1f2e;
+  --color-surface-3: #232938;
+  --color-ink-strong: #f8f9fa;
+  --color-ink-soft: #b8bcc4;
+  --color-ink-faint: #6c7280;
+  --color-edge: rgba(255, 255, 255, 0.08);
+  --color-edge-strong: rgba(255, 255, 255, 0.14);
 
-  /* Aliases for components that use shorthand variable names */
-  --bg: var(--color-surface-0);
-  --text: var(--color-ink-strong);
-  --text-muted: var(--color-ink-faint);
-  --surface: var(--color-surface-1);
-  --surface-hover: var(--color-surface-2);
-  --accent: var(--color-brand-500);
-  --border: var(--color-edge);
+  /* Marmo UI token overrides */
+  --color-bg: #0a0d14;
+  --color-panel: #11151f;
+  --color-ink: #b8bcc4;
+  --color-ink-dark: #f8f9fa;
+  --color-ink-light: #6c7280;
+  --color-ink-muted: #6c7280;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(255, 255, 255, 0.14);
+  --color-border-secondary: rgba(255, 255, 255, 0.08);
+  --color-border-muted: rgba(255, 255, 255, 0.04);
+  --color-muted: rgba(255, 255, 255, 0.05);
+  --color-primary-solid: #84d44b;
+  --color-primary-solid-hover: #a3e070;
+  --color-primary-bright: #c0eb8f;
+  --color-primary-muted: #1a2a0e;
+  --color-primary-contrast: #0a0d14;
+  --color-ink-primary: #a3e070;
+  --color-icon-primary: #a3e070;
+  --color-icon-primary-bright: #c0eb8f;
+  --color-border-primary: #84d44b;
+  --color-border-focus: #a3e070;
+
+  /* Shorthand aliases for custom components */
+  --bg: #0a0d14;
+  --text: #f8f9fa;
+  --text-muted: #6c7280;
+  --surface: #11151f;
+  --surface-hover: #1a1f2e;
+  --accent: #84d44b;
+  --border: rgba(255, 255, 255, 0.08);
 }
 
 /* Optional light theme — kept subtle, brand stays premium */
 :root[data-theme="light"],
 :root.light {
   color-scheme: light;
-  --color-surface-0: oklch(0.99 0 0);
-  --color-surface-1: oklch(1 0 0);
-  --color-surface-2: oklch(0.98 0.002 256);
-  --color-surface-3: oklch(0.96 0.003 256);
-  --color-ink-strong: oklch(0.18 0.01 256);
-  --color-ink-soft: oklch(0.35 0.01 256);
-  --color-ink-faint: oklch(0.55 0.01 256);
-  --color-edge: oklch(0.2 0.01 256 / 0.1);
-  --color-edge-strong: oklch(0.2 0.01 256 / 0.18);
+  --color-surface-0: #fafafa;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f4f5f7;
+  --color-surface-3: #e8eaed;
+  --color-ink-strong: #1a1d24;
+  --color-ink-soft: #494e5a;
+  --color-ink-faint: #7a8090;
+  --color-edge: rgba(0, 0, 0, 0.1);
+  --color-edge-strong: rgba(0, 0, 0, 0.18);
 
-  --color-bg: var(--color-surface-0);
-  --color-panel: var(--color-surface-1);
-  --color-ink: var(--color-ink-soft);
-  --color-ink-dark: var(--color-ink-strong);
-  --color-ink-light: var(--color-ink-faint);
-  --color-ink-muted: var(--color-ink-faint);
-  --color-border: var(--color-edge);
-  --color-border-hover: var(--color-edge-strong);
-  --color-muted: oklch(0.2 0.01 256 / 0.04);
-  --color-primary-solid: var(--color-brand-600);
-  --color-primary-solid-hover: var(--color-brand-700);
-  --color-primary-bright: var(--color-brand-500);
-  --color-primary-contrast: oklch(0.99 0 0);
-  --color-ink-primary: var(--color-brand-700);
-  --color-icon-primary: var(--color-brand-600);
-  --color-icon-primary-bright: var(--color-brand-500);
+  --color-bg: #fafafa;
+  --color-panel: #ffffff;
+  --color-ink: #494e5a;
+  --color-ink-dark: #1a1d24;
+  --color-ink-light: #7a8090;
+  --color-ink-muted: #7a8090;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border-hover: rgba(0, 0, 0, 0.18);
 
-  /* Aliases for light theme */
-  --bg: var(--color-surface-0);
-  --text: var(--color-ink-strong);
-  --text-muted: var(--color-ink-faint);
-  --surface: var(--color-surface-1);
-  --surface-hover: var(--color-surface-2);
-  --accent: var(--color-brand-600);
-  --border: var(--color-edge);
+  --bg: #fafafa;
+  --text: #1a1d24;
+  --text-muted: #7a8090;
+  --surface: #ffffff;
+  --surface-hover: #f4f5f7;
+  --accent: #5fa83a;
+  --border: rgba(0, 0, 0, 0.1);
 }
 
 /* ───────────── Base resets / typography ───────────── */
