@@ -1,58 +1,41 @@
 import { NextResponse } from "next/server";
-import { contactSchema } from "@/lib/validation";
-import { getDb } from "@/lib/db";
-import { contacts } from "@/db/schema";
+import { dbRun, hasDb } from "@/lib/db";
 
 export const runtime = "edge";
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export async function POST(request: Request) {
-  let body: unknown;
   try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ ok: false, error: "Invalid JSON" }, { status: 400 });
-  }
+    const body = (await request.json().catch(() => ({}))) as Record<string, unknown>;
+    const name = typeof body.name === "string" ? body.name.trim() : "";
+    const email = typeof body.email === "string" ? body.email.trim() : "";
+    const message = typeof body.message === "string" ? body.message.trim() : "";
 
-  const parsed = contactSchema.safeParse(body);
-  if (!parsed.success) {
-    const firstError = parsed.error.issues[0];
-    return NextResponse.json(
-      { ok: false, error: firstError?.message || "Validation failed" },
-      { status: 422 }
-    );
-  }
-
-  const { name, email, company, projectType, budget, message } = parsed.data;
-
-  // Save to D1 via Drizzle
-  try {
-    const db = getDb();
-    if (db) {
-      await db.insert(contacts).values({
-        name,
-        email,
-        company: company || null,
-        projectType: projectType || null,
-        budget: budget || null,
-        message,
-      });
+    if (!name || name.length < 2) {
+      return NextResponse.json({ ok: false, error: "Tên quá ngắn" }, { status: 422 });
     }
-  } catch (e) {
-    console.error("[contact] D1 insert failed:", e);
+    if (!EMAIL_RE.test(email)) {
+      return NextResponse.json({ ok: false, error: "Email không hợp lệ" }, { status: 422 });
+    }
+    if (!message || message.length < 10) {
+      return NextResponse.json({ ok: false, error: "Tin nhắn quá ngắn" }, { status: 422 });
+    }
+
+    if (hasDb()) {
+      await dbRun(
+        "INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)",
+        [name, email, message]
+      );
+    }
+
+    return NextResponse.json({ ok: true, message: "Tin nhắn đã được gửi!" });
+  } catch (error) {
+    console.error("[contact] Error:", error);
+    return NextResponse.json({ ok: false, error: "Lỗi server" }, { status: 500 });
   }
-
-  console.log(`[contact] submission from ${name} <${email}>`);
-
-  return NextResponse.json({
-    ok: true,
-    message: "Message received — we'll reply within one business day.",
-  });
 }
 
 export async function GET() {
-  return NextResponse.json({
-    ok: true,
-    endpoint: "POST /api/contact",
-    fields: ["name", "email", "company?", "projectType?", "budget?", "message"],
-  });
+  return NextResponse.json({ ok: true, endpoint: "POST /api/contact" });
 }

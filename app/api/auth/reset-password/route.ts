@@ -1,42 +1,27 @@
 import { NextResponse } from "next/server";
-import { getDb } from "@/lib/db";
-import { users } from "@/db/schema";
-import { eq } from "drizzle-orm";
-import { z } from "zod";
+import { dbRun, hasDb } from "@/lib/db";
 
 export const runtime = "edge";
 
-const schema = z.object({
-  email: z.string().email(),
-  newPassword: z.string().min(6, "Mật khẩu phải có ít nhất 6 ký tự"),
-});
-
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => ({}));
-  const parsed = schema.safeParse(body);
-  if (!parsed.success) {
-    return NextResponse.json(
-      { ok: false, error: parsed.error.issues[0]?.message || "Dữ liệu không hợp lệ" },
-      { status: 422 }
-    );
-  }
-
-  const { email, newPassword } = parsed.data;
-  const passwordHash = btoa(newPassword);
-
   try {
-    const db = getDb();
-    if (db) {
-      // Update password in D1
-      await db.update(users)
-        .set({ passwordHash })
-        .where(eq(users.email, email));
+    const body = (await request.json().catch(() => ({}))) as { email?: string; newPassword?: string };
+    const email = typeof body.email === "string" ? body.email.trim() : "";
+    const newPassword = typeof body.newPassword === "string" ? body.newPassword : "";
 
-      return NextResponse.json({ ok: true, message: "Đặt lại mật khẩu thành công" });
+    if (!email || !newPassword || newPassword.length < 6) {
+      return NextResponse.json({ ok: false, error: "Email và mật khẩu mới (6+ ký tự) là bắt buộc" }, { status: 422 });
     }
-  } catch (e) {
-    console.error("[auth/reset-password] D1 error:", e);
-  }
 
-  return NextResponse.json({ ok: true, message: "Đặt lại mật khẩu thành công" });
+    const passwordHash = btoa(newPassword);
+
+    if (hasDb()) {
+      await dbRun("UPDATE users SET password_hash = ? WHERE email = ?", [passwordHash, email]);
+    }
+
+    return NextResponse.json({ ok: true, message: "Đặt lại mật khẩu thành công" });
+  } catch (error) {
+    console.error("[auth/reset-password] Error:", error);
+    return NextResponse.json({ ok: false, error: "Lỗi server: " + String(error) }, { status: 500 });
+  }
 }

@@ -25,10 +25,10 @@ export default function RegisterPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
       });
-      const data: { ok: boolean; error?: string; message?: string } = await res.json();
+      const data: { ok: boolean; error?: string; message?: string; otp?: string } = await res.json();
       if (!res.ok) throw new Error(data.error || "Đăng ký thất bại");
       setStep("otp");
-      setSuccess("Mã OTP đã được gửi đến email của bạn!");
+      setSuccess(data.otp ? `Mã OTP của bạn: ${data.otp}` : "Mã OTP đã được gửi đến email!");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Đăng ký thất bại");
     } finally {
