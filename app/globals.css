@@ -59,7 +59,8 @@
 }
 
 /* ───────────── Dark surface overrides (default) ───────────── */
-:root {
+/* Use html selector for higher specificity than :root + @theme */
+html {
   color-scheme: dark;
 
   /* Hardcoded hex values (not oklch) for maximum browser compatibility */
@@ -109,9 +110,9 @@
   --border: rgba(255, 255, 255, 0.08);
 }
 
-/* Optional light theme — kept subtle, brand stays premium */
-:root[data-theme="light"],
-:root.light {
+/* Optional light theme */
+html[data-theme="light"],
+html.light {
   color-scheme: light;
   --color-surface-0: #fafafa;
   --color-surface-1: #ffffff;
